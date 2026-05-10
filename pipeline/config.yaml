@@ -1,0 +1,49 @@
+output_dir: data/processed
+raw_dir: data/raw
+
+# Bounding boxes to process — add more regions freely
+regions:
+  - name: South Asia
+    bbox: [60.0, 5.0, 97.0, 37.0]
+  - name: Southeast Asia
+    bbox: [95.0, -10.0, 141.0, 25.0]
+  - name: Sub-Saharan Africa
+    bbox: [-18.0, -35.0, 52.0, 23.0]
+  - name: Latin America
+    bbox: [-82.0, -56.0, -34.0, 13.0]
+  - name: Middle East & North Africa
+    bbox: [-6.0, 15.0, 63.0, 38.0]
+  - name: Europe
+    bbox: [-10.0, 36.0, 32.0, 71.0]
+  - name: East Asia
+    bbox: [73.0, 18.0, 145.0, 53.0]
+
+osm:
+  # Infrastructure tags to query from Overpass
+  cycling_tags:
+    - highway=cycleway
+    - cycleway=lane
+    - cycleway=track
+    - cycleway=dedicated
+  transit_tags:
+    - public_transport=stop_position
+    - highway=bus_stop
+    - railway=station
+    - railway=tram_stop
+
+worldpop:
+  resolution: 100m  # 100m or 1km
+  year: 2020
+
+worldbank:
+  indicators:
+    - NY.GDP.PCAP.PP.KD   # GDP per capita PPP
+    - SI.POV.GINI          # Gini coefficient
+  year: 2022
+
+gap_score:
+  # Weights for the gap score formula
+  density_weight: 0.5
+  income_weight: 0.3
+  infra_weight: 0.2
+  grid_resolution_km: 5
